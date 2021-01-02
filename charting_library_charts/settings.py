@@ -2,6 +2,9 @@
 
 import os
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
@@ -15,13 +18,18 @@ MANAGERS = ADMINS
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-		'NAME': os.getenv('DB_NAME', 'charting_library'),
-		'USER': os.getenv('DB_USER', 'charting'),
-		'PASSWORD': os.getenv('DB_PASSWORD', 'charting'),
-		'HOST': os.getenv('DB_HOST', 'localhost'),
-		'PORT': int(os.getenv('DB_PORT', '5432')),
-	}
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+
+	# 'default': {
+	# 	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+	# 	'NAME': os.getenv('DB_NAME', 'charting_library'),
+	# 	'USER': os.getenv('DB_USER', 'charting'),
+	# 	'PASSWORD': os.getenv('DB_PASSWORD', 'charting'),
+	# 	'HOST': os.getenv('DB_HOST', 'localhost'),
+	# 	'PORT': int(os.getenv('DB_PORT', '5432')),
+	# }
 }
 
 
